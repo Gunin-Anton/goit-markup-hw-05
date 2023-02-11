@@ -8,7 +8,7 @@
   --logo-text-color-footer: #f4f4fd;
   --nav-link-color: #2e2f42;
   --contacts-link-color: #434455;
-  --link-color-accent: #4d5ae5;
+  --link-color-accent: #404bbf;
   --hero-title-color: #ffffff;
   --hero-backgrnd-color: #2e2f42;
   --hero-btn-text-color: #ffffff;
@@ -132,14 +132,26 @@ body {
   padding-bottom: 24px;
 }
 
-.header-nav-link.link-current {
+.header-nav-link:hover,
+.header-nav-link:focus {
+  color: var(--link-color-accent);
+}
+
+.current-page {
+  position: relative;
   text-decoration: none;
   color: var(--link-color-accent);
 }
 
-.header-nav-link:hover,
-.header-nav-link:focus {
-  color: var(--link-color-accent);
+.current-page::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  left: 0;
+  bottom: -1px;
+  background-color: var(--link-color-accent);
+  border-radius: 2px;
 }
 
 .contacts {
@@ -606,16 +618,18 @@ body {
   width: calc((100% - 2 * 24px) / 3);
   margin-right: 24px;
   margin-bottom: 48px;
-  box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08);
 }
 
-.card-item:hover {
+.card-link {
+  display: block;
+  color: #2e2f42;
+  box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08);
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-link:is(:hover, :focus) {
   box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
     0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
-}
-
-.card-item a {
-  color: #2e2f42;
 }
 
 .card-item:nth-child(3n) {
@@ -649,3 +663,37 @@ body {
   color: var(--secondary-text-color);
   margin-top: 8px;
 }
+
+/*--------- FILTER-CARD-OVERLAY ---------*/
+.overlay-thumb {
+  position: relative;
+  overflow: hidden;
+}
+
+.overlay-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #4d5ae5;
+  transform: translatey(100%);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0.9;
+}
+
+.overlay-text {
+  position: absolute;
+  padding: 40px 32px 0px 32px;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #f4f4fd;
+}
+
+.card-link:is(:hover, :focus) .overlay-content {
+  transform: translatey(0);
+}
+/* ------------------------------ */
