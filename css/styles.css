@@ -314,7 +314,8 @@ body {
   font-size: 20px;
   line-height: 1.2;
   letter-spacing: 0.02em;
-  padding-bottom: 8px;
+  margin-top: 8px;
+  margin-bottom: 8px;
   width: 264px;
 }
 
